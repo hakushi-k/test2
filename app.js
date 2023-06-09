@@ -1,5 +1,5 @@
-const protect = require('static-auth')
-const safeCompare = require('safe-compare')
+import protect from 'static-auth'
+import safeCompare from 'safe-compare'
 
 const USER_NAME = process.env.USER_NAME || 'admin'
 const PASSWORD = process.env.PASSWORD || 'admin'
