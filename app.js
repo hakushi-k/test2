@@ -20,4 +20,4 @@ const app = protect(
   }
 )
 
-module.exports = app
+export default app
