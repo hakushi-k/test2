@@ -1,20 +1,18 @@
-const protect = require('static-auth');
-const safeCompare = require('safe-compare');
+const protect = require('static-auth')
+const safeCompare = require('safe-compare')
 
-const USER_NAME = 'user';
-const PASSWORD = 'password';
+const USER_NAME = process.env.USER_NAME || 'admin'
+const PASSWORD = process.env.PASSWORD || 'admin'
 
 const app = protect(
   '/',
-  (username, password) => {
-    return safeCompare(username, USER_NAME) && safeCompare(password, PASSWORD)
-  },
+  (username, password) => safeCompare(username, USER_NAME) && safeCompare(password, PASSWORD),
   {
-    directory: `${ __dirname }/public`,
+    directory: `${__dirname}/public`,
     onAuthFailed: (res) => {
-      res.end('Authentication failed.')
+      res.end('Authentication failed')
     },
   }
-);
+)
 
-module.exports = app;
+module.exports = app
